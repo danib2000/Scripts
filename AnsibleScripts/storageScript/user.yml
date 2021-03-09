@@ -1,0 +1,5 @@
+---
+- name: create users 
+  hosts: clients
+  roles: 
+    - userCreate 

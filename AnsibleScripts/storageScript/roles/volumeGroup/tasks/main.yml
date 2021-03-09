@@ -1,0 +1,7 @@
+---
+# tasks file for volumeGroup
+- name: create volume grups
+  lvg:
+    vg: vgans01
+    pvs: '{{ devices }}'
+

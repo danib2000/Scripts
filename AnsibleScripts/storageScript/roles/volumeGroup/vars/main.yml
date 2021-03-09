@@ -1,0 +1,7 @@
+---
+# vars file for volumeGroup
+devices:
+  - /dev/sdb
+  - /dev/sdc
+  - /dev/sdd
+

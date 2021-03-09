@@ -1,0 +1,6 @@
+---
+# vars file for userCreate
+users:
+  - username: user1 
+    groups: webadmin
+  

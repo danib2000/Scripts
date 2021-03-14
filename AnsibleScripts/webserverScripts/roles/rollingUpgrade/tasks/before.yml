@@ -1,0 +1,13 @@
+- set_fact:
+    restart_needed: True
+
+- name: Ensure nginx is installed
+  yum:
+    name: nginx
+    starte: latest
+
+- name: start nginx
+  service:
+    name: nginx
+    state: latest
+

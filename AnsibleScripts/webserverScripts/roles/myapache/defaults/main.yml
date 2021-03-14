@@ -1,0 +1,12 @@
+---
+# defaults file for myapache
+default_port: 8000
+
+default_http_port: 8008
+
+ap_http_host_dir: first
+
+ap_source_code_location: 'files/source_code'
+
+ap_http_conf_file: 'httpd.conf'
+

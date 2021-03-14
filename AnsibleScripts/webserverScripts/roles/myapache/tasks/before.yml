@@ -1,0 +1,46 @@
+---
+# tasks file for myapache
+- name: Install yum packages
+  yum:
+    name: '{{ item }}'
+    state: present
+  loop: '{{ packages }}'
+  tags: 
+    - packages
+
+- name: create document root
+  file:
+    path: "{{ item.documentRoot }}"
+    state: directory
+  loop: '{{ webServerHosts }}'
+
+- name: copy source code 
+  copy:
+    src: '{{ item.source_location }}'
+    dest: '{{ item.documentRoot }}'
+  loop: '{{ webServerHosts }}'
+
+- name: copy conf file 
+  template: 
+    src: "webserver.conf.j2"
+    dest: "/etc/httpd/conf.d/{{ ap_http_conf_file }}"
+    owner: apache 
+    group: apache 
+    mode: 0644
+  notify: "restart httpd"
+
+- name: Enable and restart httpd
+  service:
+    name: httpd
+    enabled: yes
+    state: started
+
+- name: "Add firewall rule"
+  firewalld:
+    port: "{{ default_http_port }}/tcp"
+    permanent: yes
+    state: enabled 
+    immediate: yes
+  notify: "restart firewalld"
+  tags: 
+    - firewalld

@@ -1,0 +1,19 @@
+---
+# vars file for myapache
+packages:
+  - httpd
+  - vim
+  - git
+
+webServerHosts:
+  - serverName: first.com
+    serverAlias: www.firstSite.org 
+    documentRoot: "/var/www/html/"
+    source_location: "files/index.html"
+  - serverName: second.com
+    serverAlias: www.secondSite.org
+    documentRoot: "/var/www/html/"
+    source_location: "files/second.html"
+  
+        
+

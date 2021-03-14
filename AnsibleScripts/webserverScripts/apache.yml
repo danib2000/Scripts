@@ -1,0 +1,7 @@
+---
+- name: start simple apache server
+  hosts: clients
+  serial: 1
+  roles:
+    - role: "myapache"
+    

@@ -1,0 +1,14 @@
+- hosts: clients
+  any_errors_fatal: true
+  roles:
+    - myapache
+      step: "before"
+
+- hosts: clients
+ any_errors_fatal: true
+ serial: 1
+ roles:
+   - myapache 
+     step: "stop_start"
+ when: restart_needed defined and restart_needed
+

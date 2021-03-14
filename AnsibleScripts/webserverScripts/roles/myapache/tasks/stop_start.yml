@@ -1,0 +1,26 @@
+#- name: adding img
+#  lineinfile:
+#    path: "/var/www/html/"
+#    line: hostvars[inventory_hostname]['ansible_default_ipv4']['address']
+
+- name: stop httpd
+  service:
+    name: httpd
+    state: stopped 
+
+- name: pause for 8 seconds
+  pause:
+    seconds: 8
+
+- name: start httpd
+  service:
+    name: httpd
+    state: started
+
+- name: pause for 2 seconds
+  pause:
+    seconds: 2
+
+- name: finished
+  debug:
+    msg: "finished restart"

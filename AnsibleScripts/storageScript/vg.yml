@@ -1,2 +1,5 @@
 ---
-- name: 
+- name: create physical volumes
+  hosts: clients
+  roles:
+    - volumeGroup 
